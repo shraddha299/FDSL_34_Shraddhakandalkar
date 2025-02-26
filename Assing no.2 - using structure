@@ -1,1 +1,72 @@
+#include <stdio.h>
 
+struct Student {
+    int roll_no;
+    float per;
+};
+
+int main() {
+    int n, i, j, temp;
+    float tempPer;
+
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+
+    struct Student students[n];
+    
+    printf("\nEnter student roll numbers:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &students[i].roll_no);
+    }
+
+    // \bubble sort for roll no
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) 
+           { 
+               if (students[j].roll_no > students[j + 1].roll_no) 
+            {  // Swap roll numbers
+                temp = students[j].roll_no;
+                students[j].roll_no = students[j + 1].roll_no;
+                students[j + 1].roll_no = temp;
+            }
+        }
+    }
+
+    // Display sorted roll numbers
+    printf("\nSorted roll numbers: ");
+    for (i = 0; i < n; i++) 
+     {  
+         printf("%d\t", students[i].roll_no);
+    }
+
+    // Input percentages
+    printf("\n\nEnter student percentages:\n");
+    for (i = 0; i < n; i++) 
+    {
+        scanf("%f", &students[i].per);
+    }
+
+    // Bubble Sort for percentages
+    for (i = 0; i < n - 1; i++) 
+       {
+           for (j = 0; j < n - i - 1; j++) 
+            {
+                if (students[j].per > students[j + 1].per) 
+                // Swap percentages
+             {
+                 tempPer = students[j].per;
+                students[j].per = students[j + 1].per;
+                students[j + 1].per = tempPer;
+             }
+           }
+        }
+
+    // Display sorted percentages
+    printf("\nSorted percentages: ");
+    for (i = 0; i < n; i++) 
+    {
+        printf("%.2f\t", students[i].per);
+    }
+
+    return 0;
+}
