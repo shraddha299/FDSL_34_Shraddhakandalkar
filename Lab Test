@@ -1,0 +1,43 @@
+#include <stdio.h>
+int main() {
+    int N, key,found = 0;
+    printf("Enter number of Book: ");
+    scanf("%d", &N);
+
+    int a[N];
+    printf("Enter %d sorted ID's of Book: ", N);
+    for (int i = 0; i < N; i++) 
+    {
+        scanf("%d", &a[i]);
+    }
+    printf("Enter element to search: ");
+    scanf("%d", &key);
+    int low,high,mid;
+    low = 0;
+    high = N - 1;
+    while (low <= high) 
+    {
+        mid = (low + high) / 2;
+
+        if (a[mid] == key) 
+        {
+            found = 1;
+            printf("Book is available");
+            break;
+        } 
+        else if (key < a[mid]) 
+        {
+            high = mid - 1;
+        } 
+        else 
+        {
+            low = mid + 1;
+        }
+    }
+
+    if (!found) {
+        printf("Book not available\n");
+    }
+
+    return 0;
+}
