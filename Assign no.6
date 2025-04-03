@@ -1,0 +1,88 @@
+#include<stdio.h>
+#define MAX 5
+int top=-1,i,n;
+int stack[MAX];
+void push()
+{
+  int x;
+  printf("enter data:");
+  scanf("%d",&x);
+  if(top==MAX-1)
+  {
+    printf("stack is full\n");
+  }
+  else
+  { 
+   
+   stack[++top]=x;
+   printf("Pushed element is %d",x);
+  }
+}
+void pop()
+{
+  
+  if(top==-1)
+  {
+    printf("Stack is Empty");
+  }
+  else
+  {
+   printf("poped element is %d",stack[top--]);
+   
+ }
+}
+
+void display()
+{ 
+  if(top==-1)
+  {
+    printf("stack is empty");
+    return;
+  }
+  else
+  {
+     printf("\nstack Elements are:");
+     for(i=top;i>=0;i--)
+    {
+      printf("%d\t",stack[i]);
+    }
+  }
+
+}
+int main()
+{ 
+    int ch;
+    do
+    {  
+       printf("1.push\n2.pop\n3.display\n4.exit\n");
+       printf("Enter choice of operation to be perform:");
+       scanf("%d",&ch);
+       
+       switch(ch)
+       {
+         case 1:
+                push();
+                break;
+        case 2:
+               pop();
+               break;
+     
+      case 3:
+             display();
+             break;
+             return 0;
+      
+      case 4:
+            printf("Exiting from program");
+             break;
+             
+     default:printf("wrong choice");
+     }
+    printf("\ndo you want to continue:(0/1)");
+    scanf("%d",&ch);
+    
+  }while(ch!=0);
+  
+  return 0;
+ }
+   
