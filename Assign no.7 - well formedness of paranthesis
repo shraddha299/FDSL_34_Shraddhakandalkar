@@ -8,7 +8,7 @@ void push(char c);
 int pop(char c);
 
 int main() {
-    printf("ENTER A PARANTHESIS STRING:\n");
+    printf("ENTER A PARENTHESIS STRING:\n");
     scanf("%s", a);
     l = strlen(a);
 
