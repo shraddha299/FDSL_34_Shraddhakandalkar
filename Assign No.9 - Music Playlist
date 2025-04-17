@@ -1,0 +1,86 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+#define size 5
+#define max_name 10
+
+int rear=-1,front=-1;
+char playlist[size][max_name];
+
+void AddSong(char song[])
+{
+   if(rear==-1 && front==-1)
+   {
+     rear=0;
+     front=0;
+     strcpy(playlist[rear],song);
+     printf("Added song : %s\n",song);
+   }
+   else if((rear+1)%size==front)
+   {
+     printf("Playlist is full\n");
+   }
+   else
+   {
+     rear=(rear+1)%size;
+     strcpy(playlist[rear],song);
+     printf("Added song is : %s\n",song);
+   }
+}
+void Playsong()
+{
+  if (rear==-1 && front==-1)
+  {
+    printf("Playlist is empty\n");
+  }
+  else if(rear==front)
+  {
+    printf("Played song is : %s\n",playlist[front]);
+    rear=-1;
+    front=-1;
+  }
+  else
+  {
+    printf("Played song is : %s\n",playlist[front]);
+    front=(front+1)%size;
+  }
+}
+
+void display_playlist()
+{
+  if(rear==-1 && front==-1)
+  {
+    printf("Playlist is empty\n");
+  }
+  else
+ {
+   printf("Playlist songs are:");
+   for(int i=front;i<=rear;i++)
+   {
+     printf("%s\n ",playlist[i]);
+   }
+ }
+}
+
+int main()
+{  
+    AddSong("song A");
+    AddSong("song B");
+    AddSong("song C");
+    AddSong("song D");
+    AddSong("song E");
+    AddSong("song F");
+    display_playlist();
+    Playsong();
+    Playsong();
+    display_playlist();
+    Playsong();
+    Playsong();
+    Playsong();
+    display_playlist();
+  
+ 
+return 0;
+}
+  
